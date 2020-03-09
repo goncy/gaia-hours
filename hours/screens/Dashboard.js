@@ -22,7 +22,7 @@ export default function DashboardScreen({redirect}) {
       {hours.length ? (
         <FlatList
           data={hours}
-          keyExtractor={({id}) => id}
+          keyExtractor={({id}) => String(id)}
           renderItem={({item: {project, working_hour_category, hours}}) => (
             <Text>
               {project.name} - {working_hour_category.name} - {hours}

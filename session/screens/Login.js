@@ -15,7 +15,7 @@ export default function LoginScreen({onLogin}) {
     <View style={styles.container}>
       <Text>Iniciar sesion</Text>
       <TextInput placeholder="Usuario" value={user} onChangeText={setUser} />
-      <TextInput keyboardType="visible-password" placeholder="Contraseña" value={password} onChangeText={setPassword} />
+      <TextInput placeholder="Contraseña" textContentType="password" value={password} onChangeText={setPassword} />
       <Button title="Login" onPress={login} />
     </View>
   );

@@ -11,7 +11,7 @@ export default function App() {
 
   if (!session) return <LoginScreen onLogin={setSession} />;
   if (screen === "Dashboard") return <DashboardScreen redirect={setScreen} />;
-  if (screen === "Register") return <RegisterScreen redirect={setScreen} />;
+  if (screen === "Register") return <RegisterScreen redirect={setScreen} session={session} />;
 
   return (
     <View style={styles.container}>

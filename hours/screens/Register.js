@@ -5,7 +5,7 @@ import api from "../api";
 import catalogsApi from "../../catalogs/api";
 import Spinner from "../../ui/feedback/Spinner";
 
-export default function RegisterScreen({redirect}) {
+export default function RegisterScreen({redirect, session}) {
   const [project, setProject] = React.useState(null);
   const [category, setCategory] = React.useState("");
   const [hours, setHours] = React.useState(0);
@@ -13,7 +13,7 @@ export default function RegisterScreen({redirect}) {
   const [status, setStatus] = React.useState("pending");
 
   function register() {
-    api.register(project, category, hours).then(() => {
+    api.register(session.user.id, project, category, hours).then(() => {
       Alert.alert("Correct", "Las horas se registraron correctamente");
 
       redirect("Dashboard");
