@@ -13,11 +13,16 @@ export default function RegisterScreen({redirect, session}) {
   const [status, setStatus] = React.useState("pending");
 
   function register() {
-    api.register(session.user.id, project, category, hours).then(() => {
-      Alert.alert("Correct", "Las horas se registraron correctamente");
+    setStatus("pending");
 
-      redirect("Dashboard");
-    });
+    api
+      .register(session.user.id, project, category, hours)
+      .then(() => {
+        Alert.alert("Correct", "Las horas se registraron correctamente");
+
+        redirect("Dashboard");
+      })
+      .catch(() => setStatus("resolved"));
   }
 
   React.useEffect(() => {

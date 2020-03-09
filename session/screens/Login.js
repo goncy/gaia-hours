@@ -15,7 +15,7 @@ export default function LoginScreen({onLogin}) {
     api
       .login(user, password)
       .then(onLogin)
-      .finally(() => setStatus("init"));
+      .catch(() => setStatus("init"));
   }
 
   if (status === "pending") return <Spinner />;
