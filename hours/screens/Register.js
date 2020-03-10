@@ -1,22 +1,25 @@
 import React from "react";
 import {StyleSheet, Alert, Text, View, Button, TextInput, Picker} from "react-native";
 
-import api from "../api";
+import {useUser} from "../../session/hooks";
 import catalogsApi from "../../catalogs/api";
 import Spinner from "../../ui/feedback/Spinner";
+import api from "../api";
 
-export default function RegisterScreen({navigation, session}) {
+export default function RegisterScreen({navigation}) {
   const [project, setProject] = React.useState(null);
   const [category, setCategory] = React.useState("");
   const [hours, setHours] = React.useState(0);
   const [catalogs, setCatalogs] = React.useState(null);
   const [status, setStatus] = React.useState("pending");
 
+  const user = useUser();
+
   function register() {
     setStatus("pending");
 
     api
-      .register(session.user.id, project, category, hours)
+      .register(user.id, project, category, hours)
       .then(() => {
         Alert.alert("Correct", "Las horas se registraron correctamente");
 
@@ -47,8 +50,8 @@ export default function RegisterScreen({navigation, session}) {
         </Picker>
         <Text>Proyecto</Text>
         <Picker selectedValue={project} style={{width: 160}} onValueChange={(project) => setProject(project)}>
-          {projects.map(({id, name, total_hours}) => (
-            <Picker.Item key={id} label={`${name} - ${total_hours}`} value={id} />
+          {projects.map(({id, name}) => (
+            <Picker.Item key={id} label={name} value={id} />
           ))}
         </Picker>
         <Text>Horas</Text>
@@ -60,7 +63,7 @@ export default function RegisterScreen({navigation, session}) {
         />
       </View>
       <Button title="Registrar" onPress={register} />
-      <Button title="Listado de horas" onPress={() => redirect("Dashboard")} />
+      <Button title="Listado de horas" onPress={() => navigation.navigate("Dashboard")} />
     </View>
   );
 }
