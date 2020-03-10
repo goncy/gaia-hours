@@ -5,7 +5,7 @@ import api from "../api";
 import catalogsApi from "../../catalogs/api";
 import Spinner from "../../ui/feedback/Spinner";
 
-export default function RegisterScreen({redirect, session}) {
+export default function RegisterScreen({navigation, session}) {
   const [project, setProject] = React.useState(null);
   const [category, setCategory] = React.useState("");
   const [hours, setHours] = React.useState(0);
@@ -20,7 +20,7 @@ export default function RegisterScreen({redirect, session}) {
       .then(() => {
         Alert.alert("Correct", "Las horas se registraron correctamente");
 
-        redirect("Dashboard");
+        navigation.navigate("Dashboard");
       })
       .catch(() => setStatus("resolved"));
   }

@@ -4,7 +4,7 @@ import {StyleSheet, Text, View, Button, FlatList} from "react-native";
 import api from "../api";
 import Spinner from "../../ui/feedback/Spinner";
 
-export default function DashboardScreen({redirect}) {
+export default function DashboardScreen({navigation}) {
   const [status, setStatus] = React.useState("pending");
   const [hours, setHours] = React.useState([]);
 
@@ -32,7 +32,7 @@ export default function DashboardScreen({redirect}) {
       ) : (
         <Text>No hay horas cargadas</Text>
       )}
-      <Button title="Registrar horas" onPress={() => redirect("Register")} />
+      <Button title="Registrar horas" onPress={() => navigation.navigate("Register")} />
     </View>
   );
 }
