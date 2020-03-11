@@ -19,6 +19,13 @@ Expo es un framework y plataforma para desarrollar aplicaciones React universale
 ## Por que Expo?
 Simplicidad, mientras que usando la CLI de React native nos permite codear e integrar modulos nativos en Java, Android, Objective-C, Swift. Usar Expo nos permite poder llegar a todas las plataformas (iOS, Android y Web) con solo un source code, probarlo y distribuirlo fácilmente mediante las apps mobile de Expo, herramientas y componentes ya integrados en Expo y más.
 
+## Corriendo el proyecto
+Para correr el proyecto simplemente hacemos:
+```bash
+npm start
+```
+Si querés ver como crear tu propio proyecto con Expo de 0 podés verlo [acá](https://expo.io/learn)
+
 ## Branches
 `step-0` - MVP
 `step-1` - React navigation
