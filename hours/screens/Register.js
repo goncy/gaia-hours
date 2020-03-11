@@ -47,8 +47,8 @@ export default function RegisterScreen({navigation, session}) {
         </Picker>
         <Text>Proyecto</Text>
         <Picker selectedValue={project} style={{width: 160}} onValueChange={(project) => setProject(project)}>
-          {projects.map(({id, name, total_hours}) => (
-            <Picker.Item key={id} label={`${name} - ${total_hours}`} value={id} />
+          {projects.map(({id, name}) => (
+            <Picker.Item key={id} label={name} value={id} />
           ))}
         </Picker>
         <Text>Horas</Text>
@@ -60,7 +60,7 @@ export default function RegisterScreen({navigation, session}) {
         />
       </View>
       <Button title="Registrar" onPress={register} />
-      <Button title="Listado de horas" onPress={() => redirect("Dashboard")} />
+      <Button title="Listado de horas" onPress={() => navigation.navigate("Dashboard")} />
     </View>
   );
 }

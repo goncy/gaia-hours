@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, Text, View, Button, TextInput} from "react-native";
+import {StyleSheet, Text, View, Button, TextInput, Alert} from "react-native";
 
 import api from "../api";
 import Spinner from "../../ui/feedback/Spinner";
@@ -15,7 +15,11 @@ export default function LoginScreen({onLogin}) {
     api
       .login(user, password)
       .then(onLogin)
-      .catch(() => setStatus("init"));
+      .catch((error) => {
+        setStatus("init");
+
+        Alert.alert("Error", error);
+      });
   }
 
   if (status === "pending") return <Spinner />;
