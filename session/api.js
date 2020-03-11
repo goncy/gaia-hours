@@ -23,7 +23,7 @@ export default {
 
       return response;
     } catch (error) {
-      Promise.reject(`No se pudo iniciar sesión: ${error.message}`);
+      return Promise.reject(`No se pudo iniciar sesión: ${error.message}`);
     }
   },
 };
