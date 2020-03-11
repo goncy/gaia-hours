@@ -42,8 +42,8 @@ export default function RegisterScreen({redirect, session}) {
         </Picker>
         <Text>Proyecto</Text>
         <Picker selectedValue={project} style={{width: 160}} onValueChange={(project) => setProject(project)}>
-          {projects.map(({id, name, total_hours}) => (
-            <Picker.Item key={id} label={`${name} - ${total_hours}`} value={id} />
+          {projects.map(({id, name}) => (
+            <Picker.Item key={id} label={name} value={id} />
           ))}
         </Picker>
         <Text>Horas</Text>
