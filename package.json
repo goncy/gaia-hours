@@ -1,4 +1,11 @@
 {
+  "name": "gaia-hours",
+  "description": "MVP para una capacitación de React native",
+  "author": {
+    "email": "gonzalo.pozzo4@gmail.com",
+    "name": "Gonzalo Pozzo",
+    "url": "http://gonzalopozzo.com"
+  },
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "REACT_DEBUGGER=\"unset ELECTRON_RUN_AS_NODE && open -g 'rndebugger://set-debugger-loc?port=19001' ||\" expo start",
