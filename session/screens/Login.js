@@ -2,20 +2,35 @@ import React from "react";
 import {StyleSheet, Text, View, Button, TextInput} from "react-native";
 
 import api from "../api";
+import Spinner from "../../ui/feedback/Spinner";
 
 export default function LoginScreen({onLogin}) {
+  const [status, setStatus] = React.useState("init");
   const [user, setUser] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   function login() {
-    api.login(user, password).then(onLogin);
+    setStatus("pending");
+
+    api
+      .login(user, password)
+      .then(onLogin)
+      .catch(() => setStatus("init"));
   }
+
+  if (status === "pending") return <Spinner />;
 
   return (
     <View style={styles.container}>
       <Text>Iniciar sesion</Text>
-      <TextInput placeholder="Usuario" value={user} onChangeText={setUser} />
-      <TextInput placeholder="Contraseña" textContentType="password" value={password} onChangeText={setPassword} />
+      <TextInput autoCapitalize="none" placeholder="Usuario" value={user} onChangeText={setUser} />
+      <TextInput
+        secureTextEntry
+        placeholder="Contraseña"
+        textContentType="password"
+        value={password}
+        onChangeText={setPassword}
+      />
       <Button title="Login" onPress={login} />
     </View>
   );
