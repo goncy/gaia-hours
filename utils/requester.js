@@ -8,20 +8,15 @@ const requester = axios.create({
   },
 });
 
-requester.interceptors.request.use(
-  async (config) => {
-    const token = await AsyncStorage.getItem("token");
+requester.interceptors.request.use(async (config) => {
+  const token = await AsyncStorage.getItem("token");
 
-    if (token) {
-      config.headers.Authorization = `Token ${token}`;
-    }
+  if (token) {
+    config.headers.Authorization = `Token ${token}`;
+  }
 
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
+  return config;
+}, Promise.reject);
 
 requester.interceptors.response.use((response) => response.data, Promise.reject);
 
