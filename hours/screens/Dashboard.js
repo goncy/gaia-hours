@@ -1,21 +1,17 @@
 import React from "react";
 import {StyleSheet, Text, View, Button, FlatList} from "react-native";
 
-import api from "../api";
 import Spinner from "../../ui/feedback/Spinner";
+import {useHours} from "../hooks";
 
 export default function DashboardScreen({navigation}) {
-  const [status, setStatus] = React.useState("pending");
-  const [hours, setHours] = React.useState([]);
+  const {hours, isLoading, list} = useHours();
 
   React.useEffect(() => {
-    api.fetch().then((hours) => {
-      setHours(hours);
-      setStatus("resolved");
-    });
-  }, []);
+    list();
+  }, [list]);
 
-  if (status === "pending") return <Spinner />;
+  if (isLoading) return <Spinner />;
 
   return (
     <View style={styles.container}>

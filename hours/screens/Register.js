@@ -4,7 +4,7 @@ import {StyleSheet, Alert, Text, View, Button, TextInput, Picker} from "react-na
 import {useUser} from "../../session/hooks";
 import catalogsApi from "../../catalogs/api";
 import Spinner from "../../ui/feedback/Spinner";
-import api from "../api";
+import {useHours} from "../hooks";
 
 export default function RegisterScreen({navigation}) {
   const [project, setProject] = React.useState(null);
@@ -14,12 +14,12 @@ export default function RegisterScreen({navigation}) {
   const [status, setStatus] = React.useState("pending");
 
   const user = useUser();
+  const {register} = useHours();
 
-  function register() {
+  function handleRegister() {
     setStatus("pending");
 
-    api
-      .register(user.id, project, category, hours)
+    register(user.id, project, category, hours)
       .then(() => {
         Alert.alert("Correct", "Las horas se registraron correctamente");
 
@@ -62,7 +62,7 @@ export default function RegisterScreen({navigation}) {
           onChangeText={(hours) => setHours(Number(hours))}
         />
       </View>
-      <Button title="Registrar" onPress={register} />
+      <Button title="Registrar" onPress={handleRegister} />
       <Button title="Listado de horas" onPress={() => navigation.navigate("Dashboard")} />
     </View>
   );
