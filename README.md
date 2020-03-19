@@ -5,6 +5,7 @@ MVP de app para cargar horas de Gaia, usado para dar una intro a React Native
 * React native
 * React navigation
 * React context
+* Redux
 * Expo
 
 ## Que necesito saber para desarrollar React native si vengo de ReactJS?
@@ -30,9 +31,10 @@ Si querés ver como crear tu propio proyecto con Expo de 0 podés verlo [acá](h
 * `step-0` - MVP
 * `step-1` - React navigation
 * `master` - React navigation + Context
+* `bonus` - React navigation + Context + Redux
 
 ## TODO
-Aparentemente en master cuando cargamos horas no se ven reflejadas en nuestro dashboard, posiblemente por que react navigation no desmonta las vistas on leave, por lo tanto no se refetchean las horas luego de cargarlas, una posible solución sería crear un context para `hours` y actualizarlo después de registrar horas nuevas
+Aparentemente en master y bonus cuando cargamos horas no se ven reflejadas en nuestro dashboard, posiblemente por que react navigation no desmonta las vistas on leave, por lo tanto no se refetchean las horas luego de cargarlas, solucionalo!
 
 ## Disclaimer
 No soy un dev mobile ni React native, no lo usé en muchas oportunidades pero me encontré con los problemas que se encuentra alguien que viene del mundo web a la hora de usarlo, suficiente como para introducir a alguien en las bases del mismo.
